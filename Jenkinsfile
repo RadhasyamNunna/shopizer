@@ -1,15 +1,15 @@
 pipeline {
     agent any 
     stages {
-        stage('Compile and Clean') { 
+        stage('Compile') { 
             steps {
 
-                sh "mvn clean compile"
+                sh "mvn compile"
             }
         }
         stage('Test') { 
             steps {
-                sh "mvn test site"
+                sh "mvn test"
             }
             
              post {
@@ -19,8 +19,8 @@ pipeline {
             }     
         }
 
-        stage('deploy') { 
+        stage('Deploy') { 
             steps {
-                sh "mvn package"
+                sh "mvn deploy package"
             }
         }
